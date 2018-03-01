@@ -25,7 +25,7 @@ var bot = new builder.UniversalBot(connector);
 // send simple notification
 function sendMessage(address, message) {
     console.log(message);
-    var msg = new builder.Message().address(resp);
+    var msg = new builder.Message().address(address);
     msg.text(message);
     bot.send(msg);
 }
