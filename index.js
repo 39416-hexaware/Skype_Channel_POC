@@ -42,11 +42,11 @@ server.get('/api/CustomWebApi', (req, res, next) => {
 
 // root dialog
 bot.dialog('/', function (session, args) {
-    console.log(session);
-    console.log(args);
+    // console.log(session);
+    // console.log(args);
     console.log(session.message.address);
     savedAddress = session.message.source;
-    var message = 'Hello! In a few seconds I\'ll send you a message proactively to demonstrate how bots can initiate messages.';
+    var message = 'Hello !!';
     session.send(message);
 
     message = 'You can also make me send a message by accessing: ';
