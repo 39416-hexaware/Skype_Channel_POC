@@ -43,7 +43,7 @@ server.get('/api/CustomWebApi', (req, res, next) => {
 bot.dialog('/', function (session, args) {
     console.log(session.message.address);
     console.log(args);
-    savedAddress = session.message.address;
+    // savedAddress = session.message.address;
     var message = 'Hello Uchiha!!';
     // session.send(message);
     sendMessage(message);
