@@ -11,8 +11,8 @@ var builder = require('botbuilder');
 
 // Setup Restify Server
 var server = restify.createServer();
-server.listen(process.env.port || process.env.PORT || 3978, function() {
-  console.log("%s listening to %s", server.name, server.url);
+server.listen(process.env.port || process.env.PORT || 3978, function () {
+    console.log("%s listening to %s", server.name, server.url);
 });
 
 // Create chat connector for communicating with the Bot Framework Service
@@ -29,6 +29,13 @@ server.post("/Skype", connector.listen());
 var bot = new builder.UniversalBot(connector);
 console.log(bot);
 
+bot.endConversationAction("goodbyeAction", "Ok... See you later.", {
+    matches: "Goodbye"
+});
+bot.on("conversationUpdate", function (message) {
+    session.send('Hi! Im from Skype!');
+});
+
 // app = express();
 // //Create express object
 
@@ -38,8 +45,6 @@ console.log(bot);
 // app.get("/Skype", function (req, res) {
 //     res.send("Skype Channel works");
 // });
-
-
 
 // app.post("/Skype", function (req, res) {
 //     console.log(JSON.stringify(req));
