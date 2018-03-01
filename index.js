@@ -23,10 +23,10 @@ server.post("/Skype", connector.listen());
 var bot = new builder.UniversalBot(connector);
 
 // send simple notification
-function sendMessage(message) {
+function sendMessage(address, message) {
     console.log(message);
-    var msg = new builder.Message().text(message);//.address(resp);
-    // msg.text(message);
+    var msg = new builder.Message().address(resp);
+    msg.text(message);
     bot.send(msg);
 }
 
@@ -44,10 +44,9 @@ server.get('/api/CustomWebApi', (req, res, next) => {
 bot.dialog('/', function (session, args) {
     console.log(session.message.address);
     console.log(args);
-    // savedAddress = session.message.address;
+    var address = session.message.address;
     var message = 'Hello Uchiha!!';
-    // session.send(message);
-    sendMessage(message);
+    sendMessage(address, message);
 });
 
 // bot.endConversationAction("goodbyeAction", "Ok... See you later.", {
