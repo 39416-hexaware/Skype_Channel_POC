@@ -45,7 +45,7 @@ bot.dialog('/', function (session, args) {
     console.log(session.message.address);
     console.log(args);
     var address = session.message.address;
-    var message = 'Hello Uchiha!!';
+    var message = 'Hello from Skype!!';
     sendMessage(address, message);
 });
 
