@@ -24,12 +24,13 @@ var bot = new builder.UniversalBot(connector);
 
 // send simple notification
 function sendMessage(message) {
+    console.log(message);
     var msg = new builder.Message().text(message);//.address(resp);
     // msg.text(message);
     bot.send(msg);
 }
 
-var savedAddress;
+// var savedAddress;
 
 // Do GET this endpoint to delivey a notification
 server.get('/api/CustomWebApi', (req, res, next) => {
@@ -47,14 +48,6 @@ bot.dialog('/', function (session, args) {
     var message = 'Hello Uchiha!!';
     // session.send(message);
     sendMessage(message);
-
-    // message = 'You can also make me send a message by accessing: ';
-    // // message += 'http://localhost:' + server.address().port + '/api/CustomWebApi';
-    // session.send(message);
-
-    // setTimeout(() => {
-    //     sendMessage(savedAddress);
-    // }, 3000);
 });
 
 // bot.endConversationAction("goodbyeAction", "Ok... See you later.", {
