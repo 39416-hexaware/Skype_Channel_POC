@@ -7,7 +7,7 @@ var builder = require('botbuilder');
 app = express();
 //Create express object
 
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 5000;
 //Assign port
 
 app.use(express.static(__dirname));

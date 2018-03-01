@@ -4,7 +4,7 @@
   "description": "Skype Channel Integration Middleware",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js"
+    "start": "node index.js"
   },
   "author": "Mubashshir Mohammed A",
   "license": "ISC",
