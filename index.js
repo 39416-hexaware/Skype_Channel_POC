@@ -45,17 +45,17 @@ bot.dialog('/', function (session, args) {
     // console.log(session);
     // console.log(args);
     console.log(session.message.address);
-    savedAddress = session.message.source;
+    savedAddress = session.message.address;
     var message = 'Hello !!';
     session.send(message);
 
     message = 'You can also make me send a message by accessing: ';
-    message += 'http://localhost:' + server.address().port + '/api/CustomWebApi';
+    // message += 'http://localhost:' + server.address().port + '/api/CustomWebApi';
     session.send(message);
 
     setTimeout(() => {
         sendProactiveMessage(savedAddress);
-    }, 5000);
+    }, 3000);
 });
 
 // bot.endConversationAction("goodbyeAction", "Ok... See you later.", {
