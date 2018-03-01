@@ -23,18 +23,17 @@ server.post("/Skype", connector.listen());
 var bot = new builder.UniversalBot(connector);
 
 // send simple notification
-function sendProactiveMessage(resp) {
-    var msg = new builder.Message().address(resp);
-    msg.text('Hello, this is a notification');
+function sendMessage(message) {
+    var msg = new builder.Message().text(message);//.address(resp);
+    // msg.text(message);
     bot.send(msg);
 }
 
 var savedAddress;
-server.post('/api/messages', connector.listen());
 
 // Do GET this endpoint to delivey a notification
 server.get('/api/CustomWebApi', (req, res, next) => {
-    sendProactiveMessage(savedAddress);
+    // sendMessage(savedAddress);
     res.send('triggered');
     next();
   }
@@ -42,20 +41,20 @@ server.get('/api/CustomWebApi', (req, res, next) => {
 
 // root dialog
 bot.dialog('/', function (session, args) {
-    // console.log(session);
-    // console.log(args);
     console.log(session.message.address);
+    console.log(WSAEINPROGRESS);
     savedAddress = session.message.address;
-    var message = 'Hello !!';
-    session.send(message);
+    var message = 'Hello Uchiha!!';
+    // session.send(message);
+    sendMessage(message);
 
-    message = 'You can also make me send a message by accessing: ';
-    // message += 'http://localhost:' + server.address().port + '/api/CustomWebApi';
-    session.send(message);
+    // message = 'You can also make me send a message by accessing: ';
+    // // message += 'http://localhost:' + server.address().port + '/api/CustomWebApi';
+    // session.send(message);
 
-    setTimeout(() => {
-        sendProactiveMessage(savedAddress);
-    }, 3000);
+    // setTimeout(() => {
+    //     sendMessage(savedAddress);
+    // }, 3000);
 });
 
 // bot.endConversationAction("goodbyeAction", "Ok... See you later.", {
