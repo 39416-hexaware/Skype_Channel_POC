@@ -26,7 +26,9 @@ var connector = new builder.ChatConnector({
 server.post("/Skype", connector.listen());
 
 // Create your bot with a function to receive messages from the user
-var bot = new builder.UniversalBot(connector);
+var bot = new builder.UniversalBot(connector, function(session) {
+    session.send('Hi! Im from Skype!');
+});
 console.log(bot);
 
 bot.endConversationAction("goodbyeAction", "Ok... See you later.", {
