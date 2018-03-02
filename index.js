@@ -3,6 +3,7 @@
 var restify = require("restify");
 var request = require('request');
 var builder = require('botbuilder');
+var lex = require('./lex-runtime');
 
 // Setup Restify Server
 var server = restify.createServer();
@@ -44,9 +45,11 @@ server.get('/api/CustomWebApi', (req, res, next) => {
 bot.dialog('/', function (session, args) {
     console.log(session.message.address);
     console.log(args);
-    var address = session.message.address;
-    var message = 'Hello from Skype!!';
-    sendMessage(address, message);
+    //lex.callLex(function() {
+        var address = session.message.address;
+        var message = 'Hello from Skype!!';
+        sendMessage(address, message);
+    //});    
 });
 
 // bot.endConversationAction("goodbyeAction", "Ok... See you later.", {
